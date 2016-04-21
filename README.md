@@ -1,5 +1,5 @@
 #Tools Crud
-Based on a [lesson from TouringSchool](https://github.com/turingschool/lesson_plans/blob/master/ruby_02-web_applications_with_ruby/forms_and_route_helpers_in_rails.markdown).
+Based on a [lesson from TuringSchool](https://github.com/turingschool/lesson_plans/blob/master/ruby_02-web_applications_with_ruby/forms_and_route_helpers_in_rails.markdown).
 
 ## Goals
 
@@ -31,7 +31,7 @@ Are you "riding Ruby on Rails?"
 $ rails s
 ```
 
-Create the Tool Model (models/your_model.rb)
+Create the Tool Model (models/tool.rb)
 ```ruby
 class Tool < ActiveRecord::Base
 end
@@ -43,16 +43,16 @@ Generate a migration. This will be the only rails generate command you should be
 $ rails g migration create_tools
 ```
 
-Tools will have the attributes name, price and quantity. I'll add the first to the migration, you add the other two.
+Tools will have the attributes name, price and quantity. I'll add the first to the migration, you add the other two. Here is a list of the migration types: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html
 
 [More on migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html)
 ```ruby
 class CreateTools < ActiveRecord::Migration
   def change
     create_table :tools do |t|
-      t.string :name
-      #add attribute
-      #add attribute
+      t.string :name # this adds an attribute named "name", which is a string, it can store values like `"hammer"`
+      # add an attribute named "price", which can store values like `15.99`
+      # add an attribute named "quantity", which can store values like `10`
     end
   end
 end
@@ -84,7 +84,7 @@ $ rake db:seed
 ## Routes
 
 Add RESTful routes for Tools:
-[Some RESTful info](https://gist.github.com/case-eee/72715407554996828e0c)
+[Some RESTful info](https://github.com/CodePlatoon/curriculum/blob/master/phase2/rest.md)
 
 ```ruby
 Rails.application.routes.draw do
